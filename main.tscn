@@ -26,7 +26,7 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
-[node name="StartTimer2" type="Marker2D" parent="."]
+[node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
 [node name="MobPath" type="Path2D" parent="."]
@@ -35,3 +35,6 @@ curve = SubResource("Curve2D_od8df")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
